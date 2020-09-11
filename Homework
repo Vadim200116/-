@@ -13,11 +13,14 @@ void showall(tNode* head);
 
 int main(void){
  tNode *head=NULL;
- push(5,&head);
  push(23,&head);
+ push(234,&head);
  showall(head);
- pop(&head);
- showall(head);
+ printf("\n");
+ printf("%d\n",pop(&head));
+ printf("%d\n",pop(&head)); 
+ printf("%d\n",pop(&head));
+ printf("No errors"); 
 return 0;
 }
 
@@ -40,10 +43,12 @@ void push(int data,tNode** head){
 int pop(tNode** head){
      tNode* temp=*head;
      if (*head==NULL){
-         return -1;
+         exit(-1);
      }
      *head=temp->next;
+     int data=temp->data;
      free(temp);
-     return 0;
+     return data;
  }
+
 
