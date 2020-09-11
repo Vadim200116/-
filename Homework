@@ -1,0 +1,49 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+typedef struct sNode{
+   struct sNode* next;
+   int data;
+}tNode;
+
+void push(int data,tNode** head);
+ int pop(tNode** head);
+void showall(tNode* head);
+
+
+int main(void){
+ tNode *head=NULL;
+ push(5,&head);
+ push(23,&head);
+ showall(head);
+ pop(&head);
+ showall(head);
+return 0;
+}
+
+
+
+void showall(tNode* head){
+    while(head!=NULL){   
+    printf("%d\n",head->data);
+    head=head->next;
+    }
+}
+
+void push(int data,tNode** head){
+   tNode* temp=(tNode*)malloc(sizeof(tNode));
+   temp->data=data;
+   temp->next=(*head);
+   (*head)=temp;
+}
+
+int pop(tNode** head){
+     tNode* temp=*head;
+     if (*head==NULL){
+         return -1;
+     }
+     *head=temp->next;
+     free(temp);
+     return 0;
+ }
+
